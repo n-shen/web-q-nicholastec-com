@@ -1,0 +1,667 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Shark Proposal and Presentation</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+}
+
+.simple-table-header {
+	background: rgb(247, 246, 243);
+	color: black;
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a9a4cd9c-ba0d-4495-bbb5-a1db3e9ec0a5" class="page sans"><header><h1 class="page-title">Shark Proposal and Presentation</h1></header><div class="page-body"><blockquote id="1d01e355-c3bc-4a77-8bb3-aec7457038e0" class=""><strong>Bookworm App by</strong> <strong>Team Excellent</strong></blockquote><figure id="718d5371-88d0-40d2-9331-2a4429e9c17b" class="image"><a href="Shark%20Prop%20718d5/Untitled.png"><img style="width:192px" src="Shark%20Prop%20718d5/Untitled.png"/></a></figure><h2 id="8179015b-da4b-46c8-a13c-dd6103af87de" class=""><em><strong>Presentation</strong></em></h2><figure id="974e83b2-e69e-4ca3-a961-f475f48b3c16"><div class="source">
+	<video width="800" controls>
+		<source src="Shark%20Prop%20718d5/Presentation_Bookworm.mp4" type="video/mp4">
+		<source src="Shark%20Prop%20718d5/Presentation_Bookworm.ogg" type="video/ogg">
+		Your browser does not support HTML video.
+	  </video>
+</figure><p id="c9699b08-ef70-4d71-9228-0661debe91e0" class="">
+</p><h2 id="e092b78d-785b-4769-a627-a13f0c705268" class=""><em>Proposal</em></h2><p id="892ce630-219c-4887-8d45-aca7afdd401c" class=""><strong>Memo</strong></p><p id="81c30b6c-8afc-4c11-8e41-64e500388942" class="">Date: March 10, 2022</p><p id="8ad02a04-675e-48ca-82c6-c232b9136a3a" class="">To: Bookworm Investors</p><p id="9a97ee9f-4387-4bc9-bb37-cd53338add59" class="">From: Aarti Patel, James Sale, Zach Lohrman, Nicholas Shen<div class="indented"><p id="78581786-247c-46a9-81f1-14e1d52f446b" class="">      BookWorm Founders</p></div></p><p id="a8d6661e-d1be-4d0c-85a8-68b829a795bc" class="">Subject: Proposal for upscaling BookWorm</p><p id="f0a6d799-d357-4773-b328-9b038ad31ce5" class=""><strong>Purpose</strong></p><p id="11726bce-cf3e-4f82-bdb7-523d78ff9798" class="">The purpose of this proposal is to request funding for advertising and gain a team member with more experience in the industry, centered around the development of our new app, BookWorm.</p><p id="d1c52c41-83d6-4d87-8419-c81027cbcbe5" class=""><strong>Summary</strong></p><p id="9d15dfba-372b-4f23-bde8-443f97086055" class="">The COVID-19 Pandemic fundamentally changed the way we do almost everything – from holding conference calls and meetings to learning material from in-person lectures. The sudden shift to virtual learning with school closures left many students struggling to adapt to taking notes and reading textbooks on a computer screen – especially so after spending most of their lives using a pencil and paper. As schools have been slowly shifting back to in-person classes with fewer virtual components, a greater emphasis has been placed on the use of technology in the learning environment. This is especially the case with the rise of popular apps such as Notability and Notion, the latter of which was founded in 2013 and is currently valued at approximately $10 billion.</p><p id="e9ebcff2-a2d3-4245-a9aa-62ed4ed9778d" class="">Other apps have also been created around the transition to virtual learning that continues to be used heavily today – most notably Uzinin Engage, Canvas, and Zoom, which form the foundation of the delivery of academic material through online quizzes, lecture recordings, and textbook distribution. Both Canvas and Zoom have seen immense success, with the former company being valued at $40 and the latter being valued at $16 billion at its initial public offering. All three programs have been integrated with many institutions, ensuring a seamless learning experience for all students; some institutions, like The Ohio State University, have distributed iPads with these programs to all students. Thus, the importance of such apps in our lives today cannot be underestimated.</p><p id="bbb07c2c-343f-49ca-9726-1a77c1021a77" class="">Our goal at BookWorm is to integrate the student learning experience with a social media app specifically designed with collaboration and sharing in mind. This would directly address the shortcomings of other apps currently on the market – especially Notability, which only permits one user at a time to edit or annotate a particular book or textbook, or document. The core functions of BookWorm will allow for students to share course materials with one another – both textbooks and standard books alike – while promoting interaction and collaboration between other users through social-media-like functions, editing, and annotation features. This will also allow for students with similar preferences in literature to connect with each other and share recommendations; our app will be more than just a studying app, broadening its use beyond the classroom.</p><figure id="bb15d498-7300-42be-80eb-7430bc937b31" class="image"><a href="Shark%20Prop%20718d5/image1.jpeg"><img style="width:700px" src="Shark%20Prop%20718d5/image1.jpeg"/></a></figure><p id="ee542529-5669-4857-9486-4a74176f09e2" class="">To effectively advertise BookWorm, our marketing team would work towards collecting data from both users and authors; we would research the current market, provide opportunities for direct comment, and participate in multiple different events geared toward reaching as broad of a market as possible. We hope to accurately reflect what consumers are looking for and directly address what they believe both BookWorm and other similar apps can improve upon. With the information obtained directly from users, we would collaborate with numerous programmers and the graphical design team to meet our users’ needs. As a startup company looking to make an impact in a new market, the customer should be placed at the forefront of everything we do. As a result, revenue will be generated from relevant advertising only and sponsorships for specific publishing firms to boost viewership. Annual subscription services will also be offered to remove ads entirely and allow for cross-compatibility and integration with the Microsoft Office suite.</p><p id="44755224-c1fa-4862-8927-46f0c4522f65" class=""><strong>Introduction</strong></p><p id="427f7896-6252-4475-af27-3b911b8d4f86" class="">Schools and institutions across the country had to quickly adapt to the challenges faced by the COVID-19 pandemic as learning moved online for the indefinite future. This included the increased use of various programs designed to cater to a newly “virtual” experience such as Zoom, Canvas, and Notability, all three of which saw an exponential increase in both users and annual revenue from the pandemic. Social media became more important than ever as people sought to maintain their connections and look for ways to share common interests, and BookWorm hopes to help rebuild these bridges through literature – one book shared at a time.</p><figure id="4c38aec0-4ec0-4ad6-823d-6a284a6307a4" class="image"><a href="Shark%20Prop%20718d5/image2.jpeg"><img style="width:700px" src="Shark%20Prop%20718d5/image2.jpeg"/></a></figure><p id="6cb0bd1b-885c-485a-9cbc-9a2323063b74" class="">As a startup company in a rapidly expanding market, BookWorm aims to fulfill many of the shortcomings prevalent on other apps. The most notable of these shortcomings is an absence of collaborative opportunities, with many apps only allowing one person to edit or annotate a particular book or document at a time. BookWorm aims to change this by introducing a feature to share books with other readers, including textbooks for students, and a social media-esque user interface (to encourage the growth of a community or something like that)</p><p id="2c1c19a8-9ad8-423b-bf3c-2f5559f4a4bd" class="">The other programs and applications listed above have enjoyed immense success, indicating there is still adequate room in the market for our app to be successful. Some of these figures include:</p><ul id="5fcd9fa8-733e-466d-bf89-0333c4a88414" class="bulleted-list"><li style="list-style-type:disc">Zoom’s Initial Public offering was valued at $16 billion</li></ul><ul id="92792aaf-5579-47e2-9e90-55ce1c2ead6d" class="bulleted-list"><li style="list-style-type:disc">Canvas being valued at $40 billion as of 2021</li></ul><ul id="2f1c1b1b-ddf0-4b61-891c-7bf5fe05f137" class="bulleted-list"><li style="list-style-type:disc">Zoom’s user base exceeding 300 million users in 2020</li></ul><ul id="59894945-8dc3-4e74-a5be-b3b1a6611b90" class="bulleted-list"><li style="list-style-type:disc">Notability becoming the top paid note-taking app on the Apple App Store</li></ul><p id="7fc68f67-0326-41cf-b2cd-5143f6647b3d" class=""><strong>Proposed Tasks</strong></p><p id="7f1a080f-f188-42f5-ac0d-60fc7b4db3e8" class=""><em>Task 1: Research current market</em></p><blockquote id="7b4ab08e-a0ba-4664-b04c-69faf856667f" class="">We plan to survey college students and find out the drawbacks of apps while using and their expectations for the Bookworm App if they are not satisfied with the current book App and are willing to find an alternative app. This stage may take up to 4 weeks.</blockquote><p id="db8273b3-74aa-4e74-9de5-26d4f7cd7cc8" class=""><em>Task 2: App design and development</em></p><blockquote id="394dfb48-4254-4183-bb56-9ad9128277bf" class="">The team will be divided into two groups: design and development. The design team will be responsible for user interface design, including homepage design, features layouts, user interactive effects, etc. The development team will focus on app core programming, which provides features’ functions, algorithms, databases, etc. Since our team want to deploy our app to many platforms (such as IOS, Android, Kindle, and Web), we will try our best to make this software compatible with most devices at the end. This stage may take up to 6 weeks.</blockquote><p id="a4c87d58-a6e8-4e3c-93cc-6e925d955511" class=""><em>Task 3: App test and release</em></p><blockquote id="7d7ceac6-3334-4324-9d76-e21c62909237" class="">After the app design and development are finished, we will import many test cases to test our app is responsive and working correctly. Some common issues such as no response and the black screen should be avoided even if the users perform malicious actions. Then, our team will release the Bookworm beta version and let more people try our products for free through advertising and marketing. We will continue to listen to feedback from users and make improvements in further updates. This stage may take up to 4 weeks.</blockquote><p id="831f4ed9-7494-4297-9f37-40e3cbad058a" class=""><strong>Schedule</strong></p><p id="98a3b995-94af-46d9-8c9f-0fe6e8942fdd" class="">Figure 1 displays the schedule for the project’s tasks should they be approved.</p><figure id="9d1234bb-3935-4514-9c55-b26095ae4761" class="image"><a href="Shark%20Prop%20718d5/schedule.png"><img style="width:1614px" src="Shark%20Prop%20718d5/schedule.png"/></a></figure><p id="3c409aa7-85bc-4173-82cc-105a3800ff5d" class="">
+</p><p id="956ca7a5-5deb-47a3-ab43-c8bb91ad3305" class=""><em>Figure 1: Schedule of Projects</em></p><p id="1c3c11da-a1d7-4e1a-a2df-cbc4b5bc0007" class=""><strong>Experience</strong></p><p id="aba31c52-9797-46fd-a658-f1b2b7473951" class="">Our team consists of experienced professionals who have prior experience consisting of App design, web development, and marketing.</p><ul id="18fc941b-72d5-475a-95d7-cac5f7693396" class="bulleted-list"><li style="list-style-type:disc">Nicholas Shen, founder of NicholasTec., has experience in web development and App development. Impressively, Mr. Shen also led in the Audience Evaluation of Presentation System development and will lead the core programming for the Bookworm App.</li></ul><ul id="4cbffff7-786c-47d8-b76f-205691ea7ee1" class="bulleted-list"><li style="list-style-type:disc">James Sale is the founder of REV Studios, a game studio designed to replicating accurate transportation and railroad simulations. He has many years of experience in project management and programming as well as an entrepreneurial drive for new and exciting projects, making him an important asset to our team. He will be responsible for designing core app functions and integrating user responses with the final version of our app.</li></ul><ul id="a6cb8214-4378-42b5-b385-a033aea5d09c" class="bulleted-list"><li style="list-style-type:disc">Aarti Patel led various sub-teams on her award-winning robotics team, The Steel Hawks. She was on the team’s executive board as inventory manager but also managed to lead the photography and videography department. Aarti was able to create and implement a system for inventory management that was used by the entire team of 80 plus high school students. Her skills in photography and videography allowed for significant growth in the team’s YouTube page and eventually winning the Chairman’s Award. Aarti’s skills will prove vital in marketing the app and discussing its growth with future investors.</li></ul><ul id="bd0ef2de-ebb7-4150-998c-30ac0bc725da" class="bulleted-list"><li style="list-style-type:disc">Zach Lohrman has several years of experience in performing risk assessments, creating and analyzing testing regimes, and writing technical documentation for NASA and Honda. He will lead financial and logistical risk assessments throughout the development of the project, but especially during Task 1. Additionally, he will be responsible for the testing phase in Task 3 to ensure the finished product meets the user’s needs.</li></ul><p id="34d565bc-e722-42a2-8ed0-b7f8cf5194b8" class=""><strong>References</strong></p><p id="b7ce30ca-7c60-46d4-a6cb-192f518fb144" class="">Inc., Apple. “Apple Design Resources.” <em>Apple Developer</em>, https://developer.apple.com/design/resources/.</p><p id="db90c1f9-35ed-483a-adf9-de7e7f1ce32e" class="">Koetsier, John. “Top 10 Apps by Downloads and Revenue Q2 2021: Report.” <em>Forbes</em>, Forbes Magazine, 16 July 2021, https://www.forbes.com/sites/johnkoetsier/2021/07/15/top-10-apps-by-downloads-and-revenue-q2-2021-report/?sh=4eed4cf32959.</p><p id="ea685ea0-352a-49f2-8c6a-942eb919500f" class="">Varshneya, Rahul. “A Step-by-Step Guide to Building Your First Mobile App.” <em>Entrepreneur</em>, Entrepreneur, 12 June 2019, https://www.entrepreneur.com/article/231145.</p><p id="e7ff739b-84ae-439a-bba5-d8fd6e5f709b" class="">
+</p><blockquote id="505f0f23-0f2c-4f3c-87fc-6d068cb32811" class=""><mark class="highlight-purple"><strong>Download Center</strong></mark></blockquote><figure id="42931a67-87b9-4c29-913d-9427d4e6fdfc"><div class="source"><a href="Shark%20Prop%20718d5/Shark_Proposal.docx">Click here to download Shark_Proposal.docx</a></div><figcaption>Shark Proposal.docx</figcaption></figure><figure id="75546df0-97ff-4e01-bca1-c372b8872714"><div class="source"><a href="Shark%20Prop%20718d5/Bookworm_Presentation_V2.pptx">Click here to download Bookworm_Presentation_V2.pptx</a></div><figcaption>Bookworm Presentation PowerPoint</figcaption></figure><figure id="1e932151-31da-4041-9c51-5bf266eefc44"><div class="source"><a href="Shark%20Prop%20718d5/Presentation_Bookworm%201.mp4">Click here to download Presentation_Bookworm.mp4</a></div><figcaption>Bookworm Presentation Video</figcaption></figure><p id="e8eb3d2e-bc39-40b1-bad0-9c9fe59a47a9" class="">
+</p></div></article></body></html>
